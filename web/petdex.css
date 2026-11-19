@@ -1,0 +1,20 @@
+/* Petdex: the pet sits on the top edge of the input field, on the right; the place has no height, so it does not move the feed */
+.pd-seat { position: relative; height: 0; pointer-events: none; }
+/* the place above the input field with nothing but the pet has no frame or padding of its own: the pet sits on the field */
+.slot-host.composer:has(> .pd-seat:only-child) { border: 0; padding: 0; background: none; min-height: 0; margin: 0; }
+.pd-seat .pd-sprite { position: absolute; right: 96px; bottom: -10px; z-index: 2; pointer-events: auto; cursor: grab;
+  touch-action: none; user-select: none; }
+.pd-seat .pd-sprite:active { cursor: grabbing; }
+.pd-head { display: inline-flex; align-items: center; line-height: 0; margin: -4px 0; }
+.pd-head .pd-sprite { cursor: pointer; }
+.pd-sprite { background-repeat: no-repeat; image-rendering: auto; flex: none; }
+.pd-now { display: flex; align-items: center; gap: var(--space-3, 12px); }
+.pd-now .hint { margin: 2px 0 0; }
+.pd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--space-2, 8px); }
+.pd-card { display: grid; justify-items: center; gap: 4px; padding: 8px 4px; border: 1px solid var(--border);
+  border-radius: var(--radius, 8px); background: var(--card); color: inherit; font: inherit; font-size: var(--text-xs, 12px);
+  cursor: pointer; }
+.pd-card:hover { border-color: var(--primary); }
+.pd-card span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Petdex thumbnails have dark columns at the edges — cut them */
+.pd-thumb { width: 56px; height: 56px; object-fit: contain; clip-path: inset(0 4%); }
